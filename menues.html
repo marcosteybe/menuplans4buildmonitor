@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menüpläne</title>
+    <style type="text/css">
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+        iframe {
+            width: calc(50% - 5px);
+            height: calc(50% - 5px);
+            border: 1px solid #b3b3b3
+        }
+    </style>
+    <script type="application/javascript">
+        function getCurrentWeekNumber() {
+            let now = new Date();
+            let janFirst = new Date(now.getFullYear(), 0, 1);
+            return Math.ceil((((now - janFirst) / 86400000) + janFirst.getDay() + 1) / 7);
+        }
+        function createTopolinoUrl() {
+            let src = document.getElementById('topolino').getAttribute('src');
+            src += 'KW' + getCurrentWeekNumber() + '.pdf';
+            document.getElementById('topolino').setAttribute('src', src);
+        }
+    </script>
+</head>
+<body>
+<iframe src="https://swisscom-fiftyone.sv-restaurant.ch/de/menuplan/#l-main"></iframe>
+<iframe src="https://zfv.ch/de/microsites/gastronomie-im-toni-areal/menueplan"></iframe>
+<iframe src="https://www.topolino-herdern.ch/files/Menuplan" id="topolino"></iframe>
+<iframe src="http://www.lunch-5.ch/uploads/menuplan.pdf"></iframe>
+<script type="application/javascript">createTopolinoUrl()</script>
+</body>
+</html>
